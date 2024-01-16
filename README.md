@@ -1,5 +1,15 @@
 # Arquitetura Cebola
 
+## Perguntas:
+
+-   A Estrutura está certa?
+-   Qual a diferença entre o `ProductService` e o `ProductRepository`?
+    -   Qual seria a necessidade de ambos?
+-   Me explique melhor sobre o `Mapper`
+    -   Onde e como devo usar?
+-   As empresas usam o `identity Server`?
+    -   Como `personalizar` o login e logout?
+
 ## Estrutura de Pastas
 
 ```csharp
