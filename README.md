@@ -9,6 +9,7 @@
     -   Onde e como devo usar?
 -   As empresas usam o `identity Server`?
     -   Como `personalizar` o login e logout?
+-   Porque o método `put` não funciona no formulário de uma página `Razor`(Update)?
 
 ## Estrutura de Pastas
 
