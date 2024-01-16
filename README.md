@@ -13,6 +13,8 @@
 -   Tem como ativar o `highlight` no `Markdown` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
 -   Você sabe como criar um `Snippet` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
 -   Como você lida com o `git` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
+-   Quando vocês vão fazer testes, usam `xUnit`?
+    -   Que outras ferramentas usam?
 
 ## Estrutura de Pastas
 
