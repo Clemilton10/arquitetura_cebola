@@ -1,5 +1,11 @@
 # Arquitetura Cebola
 
+## Explicação
+
+Onde terminou o curso do Balta:
+
+[https://github.com/Clemilton10/md_dotnet](https://github.com/Clemilton10/md_dotnet)
+
 ## Perguntas:
 
 -   A Estrutura está certa?
@@ -15,6 +21,7 @@
 -   Como você lida com o `git` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
 -   Quando vocês vão fazer testes, usam `xUnit`?
     -   Que outras ferramentas usam?
+    -   [https://github.com/Clemilton10/xUnit_teste](https://github.com/Clemilton10/xUnit_teste)
 
 ## Estrutura de Pastas
 
