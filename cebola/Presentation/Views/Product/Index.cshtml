@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Core.Models.Product>
+
+<h2>Produtos</h2>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Nome</th>
+			<th>Preço</th>
+			<th>-</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var product in Model)
+		{
+			<tr>
+				<td>@product.Id</td>
+				<td>@product.Name</td>
+				<td>@product.Price</td>
+				<td onclick="window.location.href='/Product/Update/@product.Id';" style="cursor: pointer;">Editar</td>
+			</tr>
+		}
+	</tbody>
+</table>
