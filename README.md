@@ -10,6 +10,8 @@
 -   As empresas usam o `identity Server`?
     -   Como `personalizar` o login e logout?
 -   Porque o método `put` não funciona no formulário de uma página `Razor`(Update)?
+-   Tem como ativar o `highlight` no `Markdown` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
+-   Você sabe como criar um `Snippet` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
 
 ## Estrutura de Pastas
 
