@@ -95,19 +95,26 @@ Quando vocês vão fazer testes, usam `xUnit`?
 📁 Application
 	📁 Controllers
 		📄 HomeController.cs
+			// / Index / Privacy /
 		📄 ProductController.cs
+			// / Index / Create / Update / UpdateProduct /
 	📁 DTOs // Data Transfer Object // Model
 		📄 ProductDTO.cs
+			// | Name | Price |
 📁 Core
 	📁 Interfaces
 		📄 IProductService.cs
+			// | GetAll | FindById | AddProduct | UpdateProduct |
 	📁 Mappings
 		📄 IProductProfile.cs
+			// ProductDTO == Product
 	📁 Models // Entidades
 		📄 ErrorViewModel.cs
 		📄 Product.cs
+			// | Id | Name | Price |
 	📁 Services
 		📄 ProductService.cs
+			// | GetAll | FindById | AddProduct | UpdateProduct |
 📁 Infrastructure
 	📁 Persistence
 		📄 AppDbContext.cs
@@ -127,6 +134,71 @@ Quando vocês vão fazer testes, usam `xUnit`?
 			📄 Error.cshtml
 		📄 _ViewImports.cshtml
 		📄 _ViewStart.cshtml
+```
+
+## Estrutura da execução dos serviços
+
+```csharp
+// 1. A Controller chama a service
+//		- IProductService.cs ➔ interface ➔ GetAll
+//		- ProductService.cs ➔ método ➔ GetAll
+var products = await _productService.GetAll();
+
+// 2. A Service chama a Repository
+//		- ProductRepository.cs ➔ método ➔ GetAll
+return await _productRepository.GetAll();
+
+// 3. A Repository chama a DbContext
+//		- Product.cs ➔ Id, Name, Price
+//		- AppDbContext.cs ➔ DbSet<Product> Products { get; set; }
+return await _dbContext.Products.ToListAsync();
+```
+
+```sh
+MyProject/
+├── src/
+│   ├── MyProject.Core/
+│   │   ├── Domain/
+│   │   │   ├── ProductModel.cs
+│   │   │   └── ...
+│   │   ├── Infrastructure/
+│   │   │   ├── IProductRepository.cs
+│   │   │   ├── ProductRepository.cs
+│   │   │   └── ...
+│   │   ├── Application/
+│   │   │   ├── ProductService.cs
+│   │   │   └── ...
+│   │   └── ...
+│   ├── MyProject.Web/
+│   │   ├── Controllers/
+│   │   │   ├── HomeController.cs
+│   │   │   └── ...
+│   │   ├── Views/
+│   │   │   ├── Home/
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   └── ...
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+├── tests/
+│   ├── MyProject.Core.Tests/
+│   │   ├── Domain/
+│   │   │   ├── ProductModelTests.cs
+│   │   │   └── ...
+│   │   ├── Infrastructure/
+│   │   │   ├── ProductRepositoryTests.cs
+│   │   │   └── ...
+│   │   ├── Application/
+│   │   │   ├── ProductServiceTests.cs
+│   │   │   └── ...
+│   │   └── ...
+│   ├── MyProject.Web.Tests/
+│   │   ├── Controllers/
+│   │   │   ├── HomeControllerTests.cs
+│   │   │   └── ...
+│   │   └── ...
+│   └── ...
+└── ...
 ```
 
 ## Criar o projeto
