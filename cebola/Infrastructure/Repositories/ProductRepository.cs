@@ -33,10 +33,23 @@ namespace Infrastructure.Repositories
 		public async Task UpdateProduct(Product product)
 		{
 			var p = _dbContext.Products.Find(product.Id);
-			p.Name = product.Name;
-			p.Price = product.Price;
-			_dbContext.Entry(p).State = EntityState.Modified;
-			await _dbContext.SaveChangesAsync();
+			if (p != null)
+			{
+				p.Name = product.Name;
+				p.Price = product.Price;
+				_dbContext.Entry(p).State = EntityState.Modified;
+				await _dbContext.SaveChangesAsync();
+			}
+		}
+
+		public async Task DeleteProduct(int Id)
+		{
+			var p = _dbContext.Products.Find(Id);
+			if (p != null)
+			{
+				_dbContext.Remove(p);
+				await _dbContext.SaveChangesAsync();
+			}
 		}
 	}
 }

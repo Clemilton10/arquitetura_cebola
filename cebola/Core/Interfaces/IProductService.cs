@@ -8,5 +8,6 @@ namespace Core.Interfaces
 		Task<Product>? FindById(int Id);
 		Task AddProduct(Product product);
 		Task UpdateProduct(Product product);
+		Task DeleteProduct(int Id);
 	}
 }

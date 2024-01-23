@@ -61,5 +61,12 @@ namespace arq_cebola.Application.Controllers
 			await _productService.UpdateProduct(p);
 			return RedirectToAction("Index");
 		}
+
+		[HttpGet(Name = "Delete/{Id}")]
+		public async Task<IActionResult> DeleteProduct(int Id)
+		{
+			await _productService.DeleteProduct(Id);
+			return RedirectToAction("Index");
+		}
 	}
 }

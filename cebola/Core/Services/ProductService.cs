@@ -32,5 +32,10 @@ namespace Core.Services
 		{
 			await _productRepository.UpdateProduct(product);
 		}
+
+		public async Task DeleteProduct(int Id)
+		{
+			await _productRepository.DeleteProduct(Id);
+		}
 	}
 }

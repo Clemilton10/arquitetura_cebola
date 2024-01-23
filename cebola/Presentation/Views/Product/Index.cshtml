@@ -9,6 +9,7 @@
 			<th>Nome</th>
 			<th>Preço</th>
 			<th>-</th>
+			<th>-</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,6 +20,7 @@
 				<td>@product.Name</td>
 				<td>@product.Price</td>
 				<td onclick="window.location.href='/Product/Update/@product.Id';" style="cursor: pointer;">Editar</td>
+				<td onclick="window.location.href='/Product/DeleteProduct/@product.Id';" style="cursor: pointer;">Excluir</td>
 			</tr>
 		}
 	</tbody>
