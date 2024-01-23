@@ -97,14 +97,14 @@ Quando vocês vão fazer testes, usam `xUnit`?
 		📄 HomeController.cs
 			// / Index / Privacy /
 		📄 ProductController.cs
-			// / Index / Create / Update / UpdateProduct /
+			// / Index / Create / Update / UpdateProduct / DeleteProduct /
 	📁 DTOs // Data Transfer Object // Model
 		📄 ProductDTO.cs
 			// | Name | Price |
 📁 Core
 	📁 Interfaces
 		📄 IProductService.cs
-			// | GetAll | FindById | AddProduct | UpdateProduct |
+			// | GetAll | FindById | AddProduct | UpdateProduct | DeleteProduct |
 	📁 Mappings
 		📄 IProductProfile.cs
 			// ProductDTO == Product
@@ -114,14 +114,14 @@ Quando vocês vão fazer testes, usam `xUnit`?
 			// | Id | Name | Price |
 	📁 Services
 		📄 ProductService.cs
-			// | GetAll | FindById | AddProduct | UpdateProduct |
+			// | GetAll | FindById | AddProduct | UpdateProduct | DeleteProduct |
 📁 Infrastructure
 	📁 Persistence
 		📄 AppDbContext.cs
 			// DbSet<Product> Products { get; set; }
 	📁 Repositories
 		📄 ProductRepository.cs
-			// | GetAll | FindById | AddProduct | UpdateProduct |
+			// | GetAll | FindById | AddProduct | UpdateProduct | DeleteProduct |
 📁 Presentation
 	📁 Views
 		📁 Home
