@@ -118,8 +118,10 @@ Quando vocês vão fazer testes, usam `xUnit`?
 📁 Infrastructure
 	📁 Persistence
 		📄 AppDbContext.cs
+			// DbSet<Product> Products { get; set; }
 	📁 Repositories
 		📄 ProductRepository.cs
+			// | GetAll | FindById | AddProduct | UpdateProduct |
 📁 Presentation
 	📁 Views
 		📁 Home
