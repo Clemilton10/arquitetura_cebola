@@ -1,4 +1,4 @@
-using Core.Interfaces;
+﻿using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -53,3 +53,4 @@ namespace Infrastructure.Repositories
 		}
 	}
 }
+

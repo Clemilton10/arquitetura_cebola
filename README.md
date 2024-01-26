@@ -1,91 +1,68 @@
 # Arquitetura Cebola
 
-## Explicação
-
-Onde terminou o curso do Balta:
-
-[https://github.com/Clemilton10/md_dotnet](https://github.com/Clemilton10/md_dotnet)
-
-## Perguntas:
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-A Estrutura do meu projeto `cebola` está certa?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Embora a definição de `Injeção de dependência` ser `reaproveitamento de funcionalidades`:
-
-|    Escopo | Definição                                                      |
-| --------: | :------------------------------------------------------------- |
-| Transient | Uma nova instância a cada solicitação.                         |
-|    Scoped | Uma instância por solicitação HTTP.                            |
-| Singleton | Uma instância única compartilhada entre todas as solicitações. |
-
-Quando devo usar um ou outro?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Qual a diferença entre o `ProductService` e o `ProductRepository`?
-
--   Qual seria a necessidade de ambos?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Me explique melhor sobre o `Mapper`
-
--   Onde e como devo usar?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-As empresas usam o `identity Server`?
-
--   Como `personalizar` o login e logout?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Porque o método `put` não funciona no formulário de uma página `Razor`(Update)?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Tem como ativar o `highlight` no `Markdown` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Você sabe como criar um `Snippet` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Como você lida com o `git` no ![](https://raw.githubusercontent.com/Clemilton10/icons/409d6f8e4996b306276f8c31332e2574ce7b019e/vs.svg) Visual Stúdio?
-
-</div>
-
-<div style="padding:20px;border:1px solid #58a6ff;border-radius:10px;margin-bottom:20px;margin-top:10px;width:700px;">
-
-Quando vocês vão fazer testes, usam `xUnit`?
-
--   Que outras ferramentas usam?
--   [https://github.com/Clemilton10/xUnit_teste](https://github.com/Clemilton10/xUnit_teste)
-
-</div>
-
 ## Estrutura de Pastas
+
+```console
+arquitetura_cebola.sln
+│
+├── Extras/
+│   └── README.md
+│
+├── cebola/
+│   ├── Controllers/
+│   │   ├── HomeControlller.cs
+│   │   └── ProductController.cs
+│   │
+│   ├── Models/
+│   │   └── ErrorViewModel.cs
+│   │
+│   ├── Presentation/
+│   │   └── Views/
+│   │       ├── Home/
+│   │       │   ├── Index.cshtml
+│   │       │   └── Privacy.cshtml
+│   │       │
+│   │       ├── Product/
+│   │       │   ├── Create.cshtml
+│   │       │   ├── Index.cshtml
+│   │       │   └── Update.cshtml
+│   │       │
+│   │       ├── Shared/
+│   │       │   ├── _Layout.cshtml
+│   │       │   ├── _ValidationScriptsPartial.cshtml
+│   │       │   └── Error.cshtml
+│   │       │
+│   │       ├── _ViewImports.cshtml
+│   │       └── _ViewStart.cshtml
+│   │
+│   └── Program.cs
+│
+├── cebola.Domain-Core/
+│   ├── DTOs/
+│   │   └── ProductDTO.cs
+│   │
+│   ├── Interfaces/
+│   │   └── IProductService.cs
+│   │
+│   ├── Model/
+│   │   └── IProductService.cs
+│
+└── cebola.Infra-Infrastructure/
+    ├── Mappings/
+    │   └── ProductProfile.cs
+    │
+    ├── Persistence/
+    │   └── AppDbContext.cs
+    │
+    ├── Repositories/
+    │   └── ProductRepository.cs
+    │
+    └── Services/
+        └── ProductService.cs
+```
+
+<details>
+<summary>Outras estruturas</summary>
 
 ```csharp
 📁 Properties
@@ -138,24 +115,6 @@ Quando vocês vão fazer testes, usam `xUnit`?
 		📄 _ViewStart.cshtml
 ```
 
-## Estrutura da execução dos serviços
-
-```csharp
-// 1. A Controller chama a service
-//		- IProductService.cs ➔ interface ➔ GetAll
-//		- ProductService.cs ➔ método ➔ GetAll
-var products = await _productService.GetAll();
-
-// 2. A Service chama a Repository
-//		- ProductRepository.cs ➔ método ➔ GetAll
-return await _productRepository.GetAll();
-
-// 3. A Repository chama a DbContext
-//		- Product.cs ➔ Id, Name, Price
-//		- AppDbContext.cs ➔ DbSet<Product> Products { get; set; }
-return await _dbContext.Products.ToListAsync();
-```
-
 ```sh
 MyProject/
 ├── src/
@@ -201,6 +160,26 @@ MyProject/
 │   │   └── ...
 │   └── ...
 └── ...
+```
+
+</details>
+
+## Estrutura da execução dos serviços
+
+```csharp
+// 1. A Controller chama a service
+//		- IProductService.cs ➔ interface ➔ GetAll
+//		- ProductService.cs ➔ método ➔ GetAll
+var products = await _productService.GetAll();
+
+// 2. A Service chama a Repository
+//		- ProductRepository.cs ➔ método ➔ GetAll
+return await _productRepository.GetAll();
+
+// 3. A Repository chama a DbContext
+//		- Product.cs ➔ Id, Name, Price
+//		- AppDbContext.cs ➔ DbSet<Product> Products { get; set; }
+return await _dbContext.Products.ToListAsync();
 ```
 
 ## Criar o projeto
@@ -368,4 +347,11 @@ using (var scope = app.Services.CreateScope())
 <li class="nav-item">
 	<a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Create">Create</a>
 </li>
+```
+
+## Adicionar referência de outros projetos
+
+```sh
+cd nomePasta
+dotnet add reference ../nomeProjeto/nomeProjeto.csproj
 ```
